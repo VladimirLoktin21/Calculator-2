@@ -24,12 +24,16 @@ def index():
 @app.route('/<question>/<answer>')
 def next_question(question, answer):
     if question == '1':
-        return render_template('question2.html', answer1=answer)
+        return render_template('question1.html', answer1=answer)
     elif question == '2':
-        return render_template('question3.html', size=request.args.get('size'), answer1=request.args.get('answer1'), answer2=answer)
+        return render_template('question2.html', size=request.args.get('size'), answer1=request.args.get('answer1'), answer2=answer)
     elif question == '3':
-        score = check_answers(request.args.get('answer1'), request.args.get('answer2'), answer)
-        return render_template('end.html', score=score)
+        return render_template('question3.html', answer1=request.args.get('answer1'), answer2=request.args.get('answer2'), answer3=answer)
+
+@app.route('/result/<answer1>/<answer2>/<answer3>')
+def show_result(answer1, answer2, answer3):
+    score = check_answers(answer1, answer2, answer3)
+    return render_template('end.html', score=score)
 
 if __name__ == '__main__':
     app.run(debug=True)
