@@ -14,26 +14,11 @@
         </div>
     </header>
     <main>
-        {% block content %}
-        <h2 class="main__title">Выберите варианты ответов:</h2>
-        <ul class="list">
-            <li class="list__item">
-                <a href="/1/CO2">
-                    <span>Какие газы приводят к глобальному потеплению?</span>
-                </a>
-            </li>
-            <li class="list__item">
-                <a href="/2/ExtremeWeather">
-                    <span>Какие последствия сопровождают глобальное потепление?</span>
-                </a>
-            </li>
-            <li class="list__item">
-                <a href="/3/ReducingEmissions">
-                    <span>Как можно снизить влияние глобального потепления?</span>
-                </a>
-            </li>
-        </ul>
-        {% endblock %}
+        <div class="start-quiz">
+            <a href="/1/CO2" class="start-button">
+                Начать викторину
+            </a>
+        </div>
     </main>
     <footer></footer>
 </body>
