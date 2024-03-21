@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
@@ -33,7 +33,11 @@ def next_question(question, answer):
 @app.route('/result/<answer1>/<answer2>/<answer3>')
 def show_result(answer1, answer2, answer3):
     score = check_answers(answer1, answer2, answer3)
-    return render_template('end.html', score=score)
+    return render_template('quiz_result.html', score=score)
+
+@app.route('/finish')
+def finish_quiz():
+    return redirect(url_for('show_result', answer1=request.args.get('answer1'), answer2=request.args.get('answer2'), answer3=request.args.get('answer3')))
 
 if __name__ == '__main__':
     app.run(debug=True)
